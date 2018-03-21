@@ -40,7 +40,10 @@ func (a *Auth) extractTokenStringsFromReq(r *http.Request) (string, string, *jwt
 }
 
 func (a *Auth) extractCsrfStringFromReq(r *http.Request) (string, *jwtError) {
-	csrfString := r.FormValue(a.options.CSRFTokenName)
+	csrfString := ""
+	if !a.options.CSRFInFormDisabled {
+		csrfString = r.FormValue(a.options.CSRFTokenName)
+	}
 
 	if csrfString != "" {
 		return csrfString, nil

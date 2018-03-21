@@ -40,6 +40,7 @@ type Options struct {
 	AuthTokenName         string
 	RefreshTokenName      string
 	CSRFTokenName         string
+	CSRFInFormDisabled    bool
 	Debug                 bool
 	IsDevEnv              bool
 }
